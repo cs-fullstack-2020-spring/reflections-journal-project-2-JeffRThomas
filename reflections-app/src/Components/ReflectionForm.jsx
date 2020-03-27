@@ -24,8 +24,10 @@ class ReflectionForm extends Component {
 
     newEntryMade = (userentry) => {
         userentry.preventDefault();
-        console.log("New Entry Made!")
+        console.log("Child says `New Entry Made!`")
         console.log(this.state)//Check Information To Send Up To AppContainer.jsx File
+        // Parent Call Back Function To Lift Up State
+        this.props.addToList(this.state)
     }
 
     render() {
@@ -38,19 +40,19 @@ class ReflectionForm extends Component {
                         <legend>Make A New Entry</legend>
 
                         <div>
-                            <label htmlFor="date">Creation Date:</label>
+                            <label htmlFor="date">Creation Date: </label>
                             <input type="date" name="date" onChange={this.manageInputFields}></input>
                         </div>
 
                         <div>
-                            <label htmlFor="entry">Journal Entry:</label>
+                            <label htmlFor="entry">Journal Entry: </label>
                             <input type="text" name="entry" placeholder="Enter Your Thoughts" onChange={this.manageInputFields}></input>
                         </div>
 
                         <div>
-                            <label htmlFor="confidence">Confidence Level:</label>
+                            <label htmlFor="confidence">Confidence Level: </label>
                             <select name="confidence" onChange={this.manageInputFields}>
-                                <option>Feeling?</option>
+                                <option>...is?</option>
                                 <option>High</option>
                                 <option>Medium</option>
                                 <option>Low</option>

@@ -5,8 +5,17 @@ import EntryDisplay from './EntryDisplay';
 class AppContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            journalentries:[]
+        };
     };
+
+    addToList=(entry)=>{
+        console.log("Parent says `I received the entry.`")
+        this.state.journalentries.push(entry)
+        console.log(this.state.journalentries)
+    }
+
 
     render() {
         return (
@@ -14,8 +23,10 @@ class AppContainer extends Component {
                 {/* Test Message To Verify Component Reference In App.js File */}
                 <h1>AppContainer here!</h1>
                 {/* Test Message To Verify Component References Of Children */}
-                <ReflectionForm/>
-                <EntryDisplay/>
+                <ReflectionForm addToList={this.addToList}/>
+                <hr/>
+                <EntryDisplay journalentries={this.state.journalentries}/>
+                <hr/>
             </div>
         )
     };
